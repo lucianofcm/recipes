@@ -12,6 +12,7 @@ export class HighlightDirective {
   private backgroundColor = 'white';
   private fontSize = '3em';
 
+
   /*  @HostListener('mouseenter') mouseSobre() {
       this.backgroundColor = 'yellow';
     };*/
@@ -32,6 +33,7 @@ export class HighlightDirective {
     this.fontSize = '3em';
   };
   @HostBinding('style.font-size') get setFontSize() {
+
     return this.fontSize;
   }
 
