@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostBinding, HostListener, Renderer } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Renderer, Input } from '@angular/core';
+
 
 @Directive({
   selector: '[rbHighlight]'
@@ -12,8 +13,9 @@ export class HighlightDirective {
   private backgroundColor = 'white';
   private fontSize = '3em';
 
+  @Input() teste;
 
-  /*  @HostListener('mouseenter') mouseSobre() {
+  /*  @HostListener('mouseenter') mouseSob re() {
       this.backgroundColor = 'yellow';
     };*/
   /*  @HostListener('mouseenter') mouseSobreFont() {
@@ -35,6 +37,11 @@ export class HighlightDirective {
   @HostBinding('style.font-size') get setFontSize() {
 
     return this.fontSize;
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event) {
+    console.log('Clicou no elemento' + event.target);
   }
 
   constructor() { }
