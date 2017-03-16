@@ -1,4 +1,5 @@
-import { Directive, ElementRef, HostBinding, HostListener, Renderer } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Renderer, Input } from '@angular/core';
+
 
 @Directive({
   selector: '[rbHighlight]'
@@ -9,12 +10,14 @@ export class HighlightDirective {
      this.elementRef.nativeElement.style.backgroundColor = 'green';
      this.renderer.setElementStyle(this.elementRef.nativeElement, 'background-color', 'red')
    }*/
-private backgroundColor = 'white';
-private fontSize = '3em';
-  
-/*  @HostListener('mouseenter') mouseSobre() {
-    this.backgroundColor = 'yellow';
-  };*/
+  private backgroundColor = 'white';
+  private fontSize = '3em';
+
+  @Input() teste;
+
+  /*  @HostListener('mouseenter') mouseSob re() {
+      this.backgroundColor = 'yellow';
+    };*/
   /*  @HostListener('mouseenter') mouseSobreFont() {
     this.fontSize= 30;
   };
@@ -26,14 +29,20 @@ private fontSize = '3em';
   }*/
 
   @HostListener('mouseenter') mouseSobreFont() {
-    this.fontSize= '5em';
+    this.fontSize = '5em';
   };
-    @HostListener('mouseleave') mouseFora() {
-    this.fontSize= '3em';
+  @HostListener('mouseleave') mouseFora() {
+    this.fontSize = '3em';
   };
   @HostBinding('style.font-size') get setFontSize() {
+
     return this.fontSize;
   }
-  
+
+  @HostListener('click', ['$event'])
+  onClick(event) {
+    console.log('Clicou no elemento' + event.target);
+  }
+
   constructor() { }
 }
