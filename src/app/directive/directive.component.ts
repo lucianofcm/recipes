@@ -7,10 +7,24 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class DirectiveComponent implements OnInit {
 
+  private switch = true;
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  onSwitch(parametro){
+
+    if(parametro == true) {
+
+      this.switch = !this.switch;
+    }else {
+
+      this.switch = this.switch;
+    }
+
+  }
+
 
 }

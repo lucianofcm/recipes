@@ -1,3 +1,21 @@
 <hr>
 <h2>Custom attribute directive</h2>
 <div rbHighlight>Some text</div>
+<label class="radio-inline"><input (click)=onSwitch($opcao) type="radio" name="optradio" value="opcao1" #opcao>Opção 1</label>
+<label class="radio-inline"><input type="radio" name="optradio">Opção 2</label>
+
+
+<div class="form-group">
+  <label for="usr">Name:</label>
+  <input type="text" class="form-control" id="usr">
+</div>
+
+<div class="form-group">
+  <label for="sel1">Select list:</label>
+  <select class="form-control" id="sel1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
