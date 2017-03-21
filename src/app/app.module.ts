@@ -13,7 +13,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { HighlightDirective } from './directive/highlight.directive';
-import {ProductModule} from './model/product.module'
+import {ProductModule} from './model/product.module';
 
 @NgModule({
   declarations: [
