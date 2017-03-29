@@ -14,6 +14,16 @@ import {ShoppingListAddComponent} from './shopping-list/shopping-list-add.compon
 import {DirectiveComponent} from './directive/directive.component';
 import {HighlightDirective} from './directive/highlight.directive';
 import {ProductModule} from './model/product.module';
+import {DropdownDirective} from './dropdown.directive';
+import {ModalAddrecipesComponent} from './recipes/modal-addrecipes/modal-addrecipes.component';
+import {ModalModule} from 'ng2-bootstrap/ng2-bootstrap';
+import {LogserviceComponent} from './logservice/logservice.component';
+import {ServiceComponent} from './service/service.component';
+import {CmpAComponent} from './service/cmp-a.component';
+import {CmpBComponent} from './service/cmp-b.component';
+import {LogService} from './service/log.service';
+import {DataService} from './service/data.service';
+
 
 @NgModule({
   declarations: [
@@ -26,15 +36,22 @@ import {ProductModule} from './model/product.module';
     ShoppingListComponent,
     ShoppingListAddComponent,
     DirectiveComponent,
-    HighlightDirective
+    HighlightDirective,
+    DropdownDirective,
+    ModalAddrecipesComponent,
+    LogserviceComponent,
+    ServiceComponent,
+    CmpAComponent,
+    CmpBComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ProductModule
+    ProductModule,
+    ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [LogService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

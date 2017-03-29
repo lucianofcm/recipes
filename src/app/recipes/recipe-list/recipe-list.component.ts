@@ -1,6 +1,9 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ViewChild, HostBinding} from '@angular/core';
 import {Recipe} from '../recipe';
 import {Ingredient} from '../../shared/ingredient';
+import {ModalDirective} from 'ng2-bootstrap/modal';
+import {RecipesService} from '../recipes.service';
+
 
 @Component({
   selector: 'rb-recipe-list',
@@ -8,20 +11,37 @@ import {Ingredient} from '../../shared/ingredient';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [
-    new Recipe('Receita', 'Dummy', 'http://thumbs2.ebaystatic.com/d/l225/m/mO6VXtbZOhRiefkRJW6UWBg.jpg', []),
-    new Recipe('Recita 1', 'descrição 1', 'http://thumbs.ebaystatic.com/images/g/DfkAAOSw32lYqo3x/s-l225.jpg', [new Ingredient('Acucar', 2)]),
-    new Recipe('Receita 2', 'descrição 2', 'http://www.receitasanamaria.net/wp-content/uploads/2015/10/pudim-de-leite-mo%C3%A7a.jpg', []),
-    new Recipe('Receita 2', 'descrição 3', `http://morandosozinha.com.br/wp-content/uploads/2016/02/10-receitas-f%C3%A1ceis-que-ficam-prontas-em-30-minutos-ou-menos-Morando-Sozinha-panqueca-de-omelete.jpg`, [])
-  ];
+  recipes: Recipe[] = [];
   @Output() recipeSelected = new EventEmitter<Recipe>();
   recipe = new Recipe('Dummy', 'Dummy', 'http://thumbs2.ebaystatic.com/d/l225/m/mO6VXtbZOhRiefkRJW6UWBg.jpg', []);
+  private fechaModar;
 
-  constructor() {
+  constructor(private recipeService: RecipesService) {
   }
 
   ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
   }
+
+  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
+  public isModalShown = false;
+
+  @HostBinding('class.open') get opened() {
+    return this.fechaModar;
+  }
+
+  public showModal(): void {
+    this.isModalShown = true;
+  }
+
+  public hideModal(): void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden(): void {
+    this.isModalShown = false;
+  }
+
 
   onSelected(recipe: Recipe) {
     this.recipeSelected.emit(recipe);
