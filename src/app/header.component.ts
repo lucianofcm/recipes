@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Route, Router, Routes} from '@angular/router';
 
 @Component({
   selector: 'rb-header',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+  goHome() {
+    this.router.navigate(['']);
+  }
+
 }
+export const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'}
+];

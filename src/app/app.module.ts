@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './header.component';
+import {HeaderComponent, routes} from './header.component';
 import {RecipesComponent} from './recipes/recipes.component';
 import {RecipeListComponent} from './recipes/recipe-list/recipe-list.component';
 import {RecipeItemComponent} from './recipes/recipe-list/recipe-item.component';
@@ -23,6 +23,8 @@ import {CmpAComponent} from './service/cmp-a.component';
 import {CmpBComponent} from './service/cmp-b.component';
 import {LogService} from './service/log.service';
 import {DataService} from './service/data.service';
+import {RouterModule} from '@angular/router';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import {DataService} from './service/data.service';
     FormsModule,
     HttpModule,
     ProductModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [LogService, DataService],
   bootstrap: [AppComponent]
