@@ -24,7 +24,7 @@ import {CmpBComponent} from './service/cmp-b.component';
 import {LogService} from './service/log.service';
 import {DataService} from './service/data.service';
 import {RouterModule} from '@angular/router';
-
+import {RecipesService} from './recipes/recipes.service';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import {RouterModule} from '@angular/router';
     ModalModule.forRoot(),
     RouterModule.forRoot(routes, {useHash: true})
   ],
-  providers: [LogService, DataService],
+  providers: [LogService, DataService, RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

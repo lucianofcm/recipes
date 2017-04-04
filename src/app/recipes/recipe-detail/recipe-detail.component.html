@@ -21,7 +21,7 @@
     <p>{{ingredientes.amount}}</p>
   </div>
 </div>
-<div class="col-xs-12">
+<div class="col-xs-12" *ngIf="selectedRecipe != null">
   <button class="btn btn-success">To Shopping List</button>
   <button class="btn btn-primary">Edit</button>
   <button class="btn btn-danger">Delete</button>

@@ -23,24 +23,10 @@ export class RecipeListComponent implements OnInit {
     this.recipes = this.recipeService.getRecipes();
   }
 
-  @ViewChild('autoShownModal') public autoShownModal: ModalDirective;
-  public isModalShown = false;
-
   @HostBinding('class.open') get opened() {
     return this.fechaModar;
   }
 
-  public showModal(): void {
-    this.isModalShown = true;
-  }
-
-  public hideModal(): void {
-    this.autoShownModal.hide();
-  }
-
-  public onHidden(): void {
-    this.isModalShown = false;
-  }
 
 
   onSelected(recipe: Recipe) {
