@@ -7,23 +7,29 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class DirectiveComponent implements OnInit {
 
-  private switch = true;
+  private switchi = true;
+  private items = [1, 2, 3, 4, 5, 6];
+  private value = 10000;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  onSwitch(parametro){
+  onSwitch(parametro) {
+    if (parametro === true) {
 
-    if(parametro == true) {
+      this.switchi = !this.switchi;
+    } else {
 
-      this.switch = !this.switch;
-    }else {
-
-      this.switch = this.switch;
+      this.switchi = this.switchi;
     }
 
+  }
+
+  mudarVariavel() {
+    this.switchi = !this.switchi;
   }
 
 

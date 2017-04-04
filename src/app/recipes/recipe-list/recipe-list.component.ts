@@ -1,5 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ViewChild, HostBinding} from '@angular/core';
 import {Recipe} from '../recipe';
+import {Ingredient} from '../../shared/ingredient';
+import {ModalDirective} from 'ng2-bootstrap/modal';
+import {RecipesService} from '../recipes.service';
+
 
 @Component({
   selector: 'rb-recipe-list',
@@ -9,13 +13,23 @@ import {Recipe} from '../recipe';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
   @Output() recipeSelected = new EventEmitter<Recipe>();
-  recipe = new Recipe('Dummy', 'Dummy', 'http://thumbs2.ebaystatic.com/d/l225/m/mO6VXtbZOhRiefkRJW6UWBg.jpg');
-  constructor() { }
+  recipe = new Recipe('Dummy', 'Dummy', 'http://thumbs2.ebaystatic.com/d/l225/m/mO6VXtbZOhRiefkRJW6UWBg.jpg', []);
+  private fechaModar;
 
-  ngOnInit() {
+  constructor(private recipeService: RecipesService) {
   }
 
-  onSelected(recipe: Recipe){
+  ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
+  }
+
+  @HostBinding('class.open') get opened() {
+    return this.fechaModar;
+  }
+
+
+
+  onSelected(recipe: Recipe) {
     this.recipeSelected.emit(recipe);
   }
 
